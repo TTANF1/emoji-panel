@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true, // 从编译中禁用发出文件
+    "sourceMap": true,
+    "removeComments": true, // 删除注释
+    "resolveJsonModule": true, // 加载json
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
+
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    // "declaration": true, // 生成定义文件
+    // "declarationMap": true, // 生成定义sourceMap
+    // "declarationDir": "declaration", // 定义文件输出目录
+    // "emitDeclarationOnly": true // 仅输出 d.ts 文件
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
