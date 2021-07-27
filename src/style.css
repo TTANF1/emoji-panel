@@ -1,8 +1,6 @@
 .emoji-list {
-  overflow: hidden;
+  overflow: auto;
   width: 340px;
-  height: 100px;
-  background-color: pink;
 }
 
 .emoji-item {

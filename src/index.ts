@@ -1,29 +1,60 @@
 import { EmojiPanelOption } from './interface';
-import { expression } from './icons';
+import { expression, goods } from './icons';
 import style from './style.css';
 
+const IconMap: Object = {
+  expression,
+  goods,
+};
+
+export const ICON_LIBS = {
+  expression: 'expression',
+  goods: 'goods',
+};
+
 export default class EmojiPanel {
-  option: EmojiPanelOption;
-  constructor(option: EmojiPanelOption) {
-    this.option = option;
+  options: EmojiPanelOption;
+  panel: HTMLElement;
+  constructor(options: EmojiPanelOption) {
+    this.options = options;
 
     this.init();
   }
 
-  // 挂载emoji面板 14*8  20*20
   init() {
     const div = document.createElement('div');
     div.classList.add(style['emoji-list']);
-    for (let i = 0; i < expression.length; i++) {
+    this.panel = div;
+
+    this.createIconDOM('expression');
+
+    div.addEventListener('click', (e) => {
+      let target = e.target as HTMLElement;
+      if (target.tagName !== 'SPAN') return;
+      const order = target.dataset.order;
+      const type = target.dataset.type;
+      this.options.onSelect.call(this, IconMap[type][order]);
+    });
+
+    this.options.el.appendChild(div);
+  }
+
+  createIconDOM(type: string): any {
+    for (let i = 0; i < IconMap[type].length; i++) {
       const span = document.createElement('span');
-      span.innerHTML = expression[i];
+      span.innerHTML = IconMap[type][i];
       span.classList.add(style['emoji-item']);
-      div.appendChild(span);
+      span.setAttribute('data-order', i.toString());
+      span.setAttribute('data-type', type);
+      this.panel.appendChild(span);
     }
-    this.option.el.appendChild(div);
+  }
+
+  changeIcons(type: string) {
+    const select = Object.keys(IconMap).find((v) => v === type);
+    console.log(select, 'select');
+    if (!select) throw new Error(`'${type}' This emoji library is not included yet'`);
+    this.panel.innerHTML = '';
+    this.createIconDOM(type);
   }
 }
-
-const a = document.createElement('a');
-new EmojiPanel({ el: a, onSelect: (ee = '😉') => ee });
-console.log(expression.length, '111aaaa66');
