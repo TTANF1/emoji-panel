@@ -1,6 +1,13 @@
 import { EmojiPanelOption } from './interface';
+export declare const ICON_LIBS: {
+  expression: string;
+  goods: string;
+};
 export default class EmojiPanel {
-    option: EmojiPanelOption;
-    constructor(option: EmojiPanelOption);
-    init(): void;
+  options: EmojiPanelOption;
+  panel: HTMLElement;
+  constructor(options: EmojiPanelOption);
+  init(): void;
+  createIconDOM(type: string): void;
+  changeIcons(type: string): void;
 }

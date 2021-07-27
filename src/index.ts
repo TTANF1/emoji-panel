@@ -2,7 +2,7 @@ import { EmojiPanelOption } from './interface';
 import { expression, goods } from './icons';
 import style from './style.css';
 
-const IconMap: Object = {
+const IconMap = {
   expression,
   goods,
 };
@@ -21,7 +21,7 @@ export default class EmojiPanel {
     this.init();
   }
 
-  init() {
+  init(): void {
     const div = document.createElement('div');
     div.classList.add(style['emoji-list']);
     this.panel = div;
@@ -29,7 +29,7 @@ export default class EmojiPanel {
     this.createIconDOM('expression');
 
     div.addEventListener('click', (e) => {
-      let target = e.target as HTMLElement;
+      const target = e.target as HTMLElement;
       if (target.tagName !== 'SPAN') return;
       const order = target.dataset.order;
       const type = target.dataset.type;
@@ -39,7 +39,7 @@ export default class EmojiPanel {
     this.options.el.appendChild(div);
   }
 
-  createIconDOM(type: string): any {
+  createIconDOM(type: string): void {
     for (let i = 0; i < IconMap[type].length; i++) {
       const span = document.createElement('span');
       span.innerHTML = IconMap[type][i];
@@ -50,7 +50,7 @@ export default class EmojiPanel {
     }
   }
 
-  changeIcons(type: string) {
+  changeIcons(type: string): void {
     const select = Object.keys(IconMap).find((v) => v === type);
     console.log(select, 'select');
     if (!select) throw new Error(`'${type}' This emoji library is not included yet'`);

@@ -1,0 +1,9 @@
+node_modules
+coverage
+dist
+rollup.config.js
+rollup.config.demo.js
+__test__/**/*
+*.test.js
+jest.config.js
+babel.config.js
