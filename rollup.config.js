@@ -2,7 +2,7 @@ import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
-import style from 'rollup-plugin-css-only';
+import postcss from 'rollup-plugin-postcss';
 
 export default {
   input: './src/index.ts',
@@ -18,13 +18,9 @@ export default {
     },
   ],
   plugins: [
+    postcss({ modules: true }),
     commonjs(),
     resolve(),
-    // typescript({
-    //   tsconfig: './tsconfig.json', // 导入本地ts配置
-    //   extensions: ['.js', '.ts', '.tsx'],
-    // }),
-    style({ output: 'bundle.css' }),
     typescript({
       typescript: require('typescript'),
     }),
