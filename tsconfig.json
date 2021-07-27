@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES5",
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true, // 从编译中禁用发出文件
