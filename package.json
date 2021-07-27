@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.esm.js",
+  "types": "./declaration/index.d.ts",
   "author": "TTANF_1",
   "license": "MIT",
   "files": [
@@ -11,6 +12,10 @@
   ],
   "publishConfig": {
     "registry": "http://nexus.tanzk.com:8081/repository/tzedu-npm-releases/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://git.tanzk.cn/front-end/beidou/emoji-panel"
   },
   "scripts": {
     "declaration": "rm -rf ./declaration && tsc -p tsconfig.build.json",
