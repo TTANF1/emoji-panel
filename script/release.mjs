@@ -1,5 +1,7 @@
 #!/usr/bin/env zx
 
+process.stdin.isTTY = false;
+
 await $`npm run build`;
 
 const lsFiles = await $`git ls-files -m`;
