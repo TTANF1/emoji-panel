@@ -1,4 +1,4 @@
-import EmojiPanel from '../../src/index';
+import { EmojiPanel } from '../../src/index';
 // import { ICON_LIBS } from '../../src/index';
 
 const panel = document.querySelector('#panel');

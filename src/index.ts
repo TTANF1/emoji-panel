@@ -12,7 +12,7 @@ export const ICON_LIBS = {
   goods: 'goods',
 };
 
-export default class EmojiPanel {
+export class EmojiPanel {
   options: EmojiPanelOption;
   panel: HTMLElement;
   constructor(options: EmojiPanelOption) {
@@ -58,3 +58,5 @@ export default class EmojiPanel {
     this.createIconDOM(type);
   }
 }
+
+export default { ICON_LIBS, EmojiPanel };
